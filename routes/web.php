@@ -11,6 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'testController@index');
+
+Route::get('admin',function(){
+	return view('admin-dashboard.layout.master');
 });
+
+
+Route::get('ckan','ckanController@ckan');
+Route::get('ckanapi','ckanController@ckanapi');
+
+Route::post('search','ckanController@search');
+
+Route::post('datasetcreate','ckanController@datasetcreate');
+
+//************************* Admin Menus Management *******************************************
+
+Route::Resource('menus','MenuController');
+Route::post('editmenus','MenuController@editmenus');
+
+Route::Resource('submenus','SubMenuController');
+Route::post('editsubmenus','SubMenuController@editsubmenus');
